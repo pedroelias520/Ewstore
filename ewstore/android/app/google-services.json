@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "978631764619",
+    "project_id": "ewstore-75a23",
+    "storage_bucket": "ewstore-75a23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978631764619:android:972377f78a206e864f028e",
+        "android_client_info": {
+          "package_name": "com.elias.ewstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978631764619-sc7j9dh7aqvkubtj8c34nbocnbc4grhf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCYsIGIVPaB_EuimQ3eJjchly5uAF1d2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978631764619-sc7j9dh7aqvkubtj8c34nbocnbc4grhf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
