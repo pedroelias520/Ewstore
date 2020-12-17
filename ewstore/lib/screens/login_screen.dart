@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Align(
             alignment: Alignment(-0.7,-0.9),
             child: Text(
-              "Bem-vindo",
+              "Welcome",
               textAlign: TextAlign.left,
               style: TextStyle(color: Colors.white, fontSize: 30),
             ),
@@ -34,6 +34,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     "Ewstore",
                     style: TextStyle(color: Colors.white, fontSize: 25, fontFamily: 'Arial'),
+                  ),
+                  Text(
+                    "A melhor loja para comprar barato",
+                    style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: 'Arial'),
                   )
                 ],
               ),
