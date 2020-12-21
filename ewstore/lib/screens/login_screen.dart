@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Ewstore",
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 40,
+                      fontSize: 45,
                       fontFamily: 'CreamCake'),
                 )
               ],
