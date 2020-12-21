@@ -45,9 +45,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
+  assets:
+    - lib/assets/images/womens.png    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -63,14 +62,13 @@ flutter:
   fonts:
       - family: CreamCake
         fonts:
-          - asset: fonts/Cream_Cake.ttf
-          - asset: fonts/Schyler-Italic.ttf
+          - asset: lib/assets/fonts/CreamCake.ttf
       - family: MontserratB
         fonts:
-          - asset: fonts/Montserrat-Bold.ttf
+          - asset: lib/assets/fonts/Montserrat-Bold.ttf
       - family: MontserratM
         fonts:
-          - asset: fonts/Montserrat-Medium.ttf
+          - asset: lib/assets/fonts/Montserrat-Medium.ttf  
 
   # fonts:
   #   - family: Schyler
