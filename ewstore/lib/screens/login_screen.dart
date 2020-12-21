@@ -33,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.white, fontSize: 20, fontFamily: 'MontserratB'),
             ),
           ),
-<<<<<<< HEAD
           Padding(
             padding: const EdgeInsets.only(top: 80.0, left: 150),
             child: Column(
@@ -53,26 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontFamily: 'CreamCake'),
                 )
               ],
-=======
-          Align(
-            alignment: Alignment(0.0,0.3),
-              child: Column(
-                children: [
-                  Text(
-                    "E",
-                    style: TextStyle(color: Colors.white, fontSize: 120, fontFamily: 'Arial'),
-                  ),
-                  Text(
-                    "Ewstore",
-                    style: TextStyle(color: Colors.white, fontSize: 25, fontFamily: 'Arial'),
-                  ),
-                  Text(
-                    "A melhor loja para comprar barato",
-                    style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: 'Arial'),
-                  )
-                ],
-              ),
->>>>>>> 38d3d6b325464ab6c3f78decae535dba5bc9e8dd
             ),
           ),
           Align(
