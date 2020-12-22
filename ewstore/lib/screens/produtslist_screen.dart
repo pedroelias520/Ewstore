@@ -11,6 +11,7 @@ Color color_primary = Color.fromRGBO(83, 120, 149, 1);
 Color color_secondary = Color.fromRGBO(31, 59, 100, 1);
 Color color_thirdary = Color.fromRGBO(254, 254, 254, 1);
 String username = "Pedro";
+String level = '11';
 
 class _ProductListState extends State<ProductList> {
   @override
@@ -31,6 +32,37 @@ class _ProductListState extends State<ProductList> {
             Align(
               alignment: Alignment(0.0, -0.8),
               child: Container(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Align(
+                    alignment: Alignment(-0.8, 0.7),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Level',
+                          style: TextStyle(
+                              fontFamily: 'MontserratB', fontSize: 20),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text(
+                            level,
+                            style: TextStyle(
+                                fontSize: 20, fontFamily: 'MontserratB'),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(80.0))),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(80.0))),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                   width: screenWidth / 1.2,
                   height: screenHeight / 5,
                   decoration: BoxDecoration(
@@ -56,15 +88,19 @@ class _ProductListState extends State<ProductList> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(                            
+                              Row(
                                 children: [
                                   Text(
                                     "Olá, ",
-                                    style: TextStyle(fontFamily: 'MontserratM', fontSize: 30),
+                                    style: TextStyle(
+                                        fontFamily: 'MontserratM',
+                                        fontSize: 30),
                                   ),
                                   Text(
                                     username,
-                                    style: TextStyle(fontFamily: 'MontserratB',fontSize: 30),
+                                    style: TextStyle(
+                                        fontFamily: 'MontserratB',
+                                        fontSize: 30),
                                   )
                                 ],
                               ),
@@ -76,7 +112,10 @@ class _ProductListState extends State<ProductList> {
                           ),
                         ),
                       ),
-                      Icon(Icons.person,size: 80,)
+                      Icon(
+                        Icons.person,
+                        size: 80,
+                      )
                     ],
                   ),
                   width: screenWidth / 1.2,
