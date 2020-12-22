@@ -65,27 +65,82 @@ class _LoginScreenState extends State<LoginScreen> {
                       topLeft: Radius.circular(60),
                       topRight: Radius.circular(60))),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
-                      alignment: Alignment(-0.6, 0.0),
+                    alignment: Alignment(-0.6, 1.0),
+                    child: Container(
                       child: Text(
                         'Log in',
                         style:
                             TextStyle(fontFamily: 'MontserratB', fontSize: 25),
-                      )),
-                  TextFormField(),
-                  TextFormField(),
-                  FlatButton(onPressed: () {} ,child: Text('Esqueceu a senha'),),
-                  RaisedButton(onPressed: () {}, child: Text('Log in'),),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: screenWidth / 2 + 120,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.email,
+                            color: Color.fromRGBO(83, 120, 149, 1)),
+                        labelText: "Login",
+                        enabled: true,
+                        focusColor: Color.fromRGBO(83, 120, 149, 1),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: screenWidth / 2 + 120,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        icon: Icon(
+                          Icons.lock,
+                          color: Color.fromRGBO(83, 120, 149, 1),
+                        ),
+                        labelText: "Senha",
+                        enabled: true,
+                        focusColor: Color.fromRGBO(83, 120, 149, 1),
+                      ),
+                    ),
+                  ),
+                  FlatButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Esqueceu a senha',
+                      style: TextStyle(fontFamily: 'MontserratB'),
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth / 2 + 120,
+                    child: RaisedButton(
+                      color: Color.fromRGBO(83, 120, 149, 1),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      onPressed: () {},
+                      child: Text(
+                        'Log in',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'MontserratB',
+                            fontSize: 15),
+                      ),
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Não tem uma conta?'),
+                      Text(
+                        'Não tem uma conta?',
+                        style: TextStyle(fontFamily: 'MontserratM'),
+                      ),
                       FlatButton(
                           onPressed: () {},
                           child: Text(
                             'Crie uma',
                             style: TextStyle(
+                                fontFamily: 'MonteserratM',
                                 color: Color.fromRGBO(83, 120, 149, 1)),
                           ))
                     ],

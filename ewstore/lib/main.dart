@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
   try{
-    Firestore.instance.collection('Teste').add({'teste':'teste'});
+    //Firestore.instance.collection('Teste').add({'teste':'teste'});
   }catch(e){
     debugPrint("===========================");
     debugPrint('Error to add on Firestore');
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(        
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }
