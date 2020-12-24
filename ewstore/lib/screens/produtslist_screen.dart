@@ -1,3 +1,6 @@
+
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ewstore/commons/drawer_common/Drawer.dart';
 import 'package:ewstore/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -124,9 +127,105 @@ class _ProductListState extends State<ProductList> {
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(35.0)))),
             ),
+            Align(
+              alignment: Alignment(0.0, 1.0),
+              child: Container(
+                  height: screenHeight - (screenHeight / 3),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 5),
+                  ),
+                  child: ListView.builder(itemBuilder: (context, index) {
+                    return _ProductsCard(context);
+                  })),
+            )
           ],
         ),
       ),
     );
+  }
+
+  Widget _ProductsCard(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    return StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance
+            .collection('Produts')            
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) return new Text('ERROR: ${snapshot.error}');
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return new Center(
+                child: Column(
+                  children: [
+                    Text(
+                      'Carregando produtos',
+                      style: TextStyle(fontFamily: 'MontserratB', fontSize: 25, color: Colors.white)
+                    ),
+                    CircularProgressIndicator()
+                  ],
+                ),
+              );
+            default:              
+              return new SizedBox(
+                  height: screenHeight / 4,
+                  child: ListView(
+                    children: snapshot.data.documents
+                        .map((DocumentSnapshot document) {
+                          debugPrint(document['name'].toString());
+                      return GestureDetector(                        
+                        child: Card(                                                                              
+                          margin: EdgeInsets.all(5),
+                          color: Colors.white,
+                          child: Container(
+                            width: screenWidth / 3,
+                            height: screenHeight / 8,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: new NetworkImage(
+                                            document['image'].toString()),
+                                        repeat: ImageRepeat.noRepeat,
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                Expanded(
+                                    flex: 8,
+                                    child: Container(
+                                      decoration:
+                                          BoxDecoration(color: Colors.white),
+                                      child: Stack(
+                                        children: [
+                                          Align(
+                                            child: AutoSizeText(
+                                              document['name'].toString(),
+                                              style: TextStyle(
+                                                  fontFamily: 'MontserratB',
+                                                  fontSize: 15),
+                                            ),
+                                          ),
+                                          Align(
+                                            child: AutoSizeText(
+                                                document['price'].toString()),
+                                          ),
+                                          RaisedButton(
+                                            color: Color.fromRGBO(254, 207, 162, 1),
+                                            onPressed: (){},
+                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)))                                            
+                                        ],
+                                      ),
+                                    )),
+                              ],
+                            ),
+                          ),
+                        ),
+                        onTap: () {},
+                      );
+                    }).toList()),
+                    );
+          }
+        });
   }
 }
