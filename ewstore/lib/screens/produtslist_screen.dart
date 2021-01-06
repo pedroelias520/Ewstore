@@ -140,9 +140,7 @@ class _ProductListState extends State<ProductList> {
 
   Widget _ProductsCard(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    String personUrl =
-        'https://www.google.com/url?sa=i&url=https%3A%2F%2Ficon-icons.com%2Ficon%2Fperson%2F110935&psig=AOvVaw3l_rLw87GU1nu1E_1IGzPS&ust=1609892769269000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLiCt_zDg-4CFQAAAAAdAAAAABAO';
+    double screenHeight = MediaQuery.of(context).size.height;    
     List<DocumentSnapshot> ProductList;
     return StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance.collection('Produts').snapshots(),
@@ -200,7 +198,7 @@ class _ProductListState extends State<ProductList> {
                                               Align(
                                                 alignment: Alignment(-1.0, 0.0),
                                                 child: Text(
-                                                  "${ProductList[index]['price']} Rs",
+                                                  "${ProductList[index]['price']} RS",
                                                   style: TextStyle(
                                                       fontFamily:
                                                           'MontserratM'),
