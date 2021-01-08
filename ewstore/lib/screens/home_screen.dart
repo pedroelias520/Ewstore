@@ -1,6 +1,7 @@
 
 import 'package:ewstore/commons/drawer_common/Drawer.dart' as prefix0;
 import 'package:ewstore/screens/about_screen.dart';
+import 'package:ewstore/screens/card_screen.dart';
 import 'package:ewstore/screens/produtslist_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return PageView(
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[  
-        ProductList(),              
-        AboutScreen(),
+        Scaffold(
+          drawer: prefix0.CustomDrawer(),
+          body: ProductList(),
+        )              
+
       ],
     );
   }

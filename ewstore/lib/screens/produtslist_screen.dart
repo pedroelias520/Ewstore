@@ -157,9 +157,9 @@ class _ProductListState extends State<ProductList> {
               ProductList = snapshot.data.documents;
               return GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, mainAxisSpacing: 0 ,crossAxisSpacing: 0),
-                  itemCount: ProductList.length ,
-                  padding: EdgeInsets.only(left: 50, right: 50, top: 30),
+                      crossAxisCount: 2, mainAxisSpacing: 0 ,crossAxisSpacing: 1),
+                  itemCount: ProductList.length,
+                  padding: EdgeInsets.only(left: 50, right: 50, top: 35),
                   itemBuilder: (BuildContext context, int index) {
                     return SizedBox(                                       
                       child: GestureDetector(                          
@@ -173,6 +173,7 @@ class _ProductListState extends State<ProductList> {
                                 Container(
                                   height: screenHeight / 4,
                                   decoration: BoxDecoration(
+                                      boxShadow: [BoxShadow(color: Color.fromRGBO(0, 0, 0, 200), offset: Offset(1.0,1.0),blurRadius: 10.0,spreadRadius: 2.0)],
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Padding(
@@ -182,16 +183,19 @@ class _ProductListState extends State<ProductList> {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Align(
-                                          alignment: Alignment(-1.0, 0.0),
-                                          child: AutoSizeText(
+                                          alignment: Alignment(-1.5, 0.0),
+                                          child: AutoSizeText(                                            
                                             ProductList[index]['name'],
                                             style: TextStyle(
-                                                fontFamily: 'MontserratB'),
+                                                fontFamily: 'MontserratB'                                                
+                                                ),
+                                            maxLines: 2,                                            
+                                            wrapWords: true,
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(top: 5),
+                                              const EdgeInsets.only(top: 0),
                                           child: Stack(
                                             alignment: Alignment.center,
                                             children: [
@@ -230,7 +234,7 @@ class _ProductListState extends State<ProductList> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: Alignment(0.0, -5.5),
+                                  alignment: Alignment(0.0, -5.8),
                                   child: Container(
                                       height: 120,
                                       width: 120,
