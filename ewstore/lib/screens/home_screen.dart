@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: <Widget>[  
         Scaffold(
           drawer: prefix0.CustomDrawer(),
-          body: ProductList(),
+          body: CardScreen(),
         )              
 
       ],
