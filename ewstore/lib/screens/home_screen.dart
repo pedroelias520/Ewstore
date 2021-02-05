@@ -2,7 +2,9 @@
 import 'package:ewstore/commons/drawer_common/Drawer.dart' as prefix0;
 import 'package:ewstore/screens/about_screen.dart';
 import 'package:ewstore/screens/card_screen.dart';
+import 'package:ewstore/screens/login_screen.dart';
 import 'package:ewstore/screens/produtslist_screen.dart';
+import 'package:ewstore/screens/shopping_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,14 +19,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      physics: NeverScrollableScrollPhysics(),
-      children: <Widget>[  
-        Scaffold(
+    return PageView(      
+      children: <Widget>[                  
+        Scaffold(          
           drawer: prefix0.CustomDrawer(),
-          body: CardScreen(),
-        )              
-
+          body: ProductList(),
+        ),                                 
+        Scaffold(          
+          drawer: prefix0.CustomDrawer(),
+          body: ShoppingCart(),          
+        ),
       ],
     );
   }

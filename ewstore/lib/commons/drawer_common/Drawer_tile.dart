@@ -19,9 +19,9 @@ class DrawerTile extends StatelessWidget {
           children: <Widget>[
             Padding (
             padding: EdgeInsets.symmetric(horizontal: 30),
-            child: Icon(iconData, size: 40, color: Color.fromRGBO(255, 135, 151, 1)),            
+            child: Icon(iconData, size: 40, color:  Color.fromRGBO(83, 120, 149, 1)),            
             ),
-            Text (title, style: TextStyle(fontSize: 15)),
+            Text (title, style: TextStyle(fontSize: 15, fontFamily: 'MontserratB')),
           ],
         ),
       ),

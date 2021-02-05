@@ -8,9 +8,10 @@ class CustomDrawer extends StatelessWidget {
     return Drawer(          
           child: ListView(
         children: <Widget>[
-          DrawerTile(Icons.home, "Home", 0),
-          DrawerTile(Icons.add, "Pedidos", 1),
-          DrawerTile(Icons.shopping_cart, "Carrinho", 2)
+          DrawerTile(Icons.home_outlined, "Home", 0),
+          DrawerTile(Icons.shopping_bag_outlined, "Produtos", 1),
+          DrawerTile(Icons.shopping_cart_outlined, "Carrinho de compras", 2),
+          DrawerTile(Icons.person_outline_outlined, "Perfil", 2)
         ],        
       ),
     );

@@ -18,7 +18,7 @@ class _AboutScreenState extends State<AboutScreen> {
     return Stack(
       children: <Widget>[
         BackgoundColor(),
-        CustomScrollView(
+        CustomScrollView(          
           slivers: <Widget>[
             SliverAppBar(
               floating: true,
@@ -29,7 +29,7 @@ class _AboutScreenState extends State<AboutScreen> {
                 centerTitle: true,                
               ),
             )
-          ],
+          ],          
         ),        
       ],
     );
