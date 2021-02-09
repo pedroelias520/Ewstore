@@ -8,9 +8,9 @@ class ShoppingCart extends StatefulWidget {
   _ShoppingCartState createState() => _ShoppingCartState();
 }
 
-  Color color_primary = Color.fromRGBO(83, 120, 149, 1);
-  Color color_secondary = Color.fromRGBO(31, 59, 100, 1);
-  Color color_thirdary = Color.fromRGBO(254, 254, 254, 1);
+Color color_primary = Color.fromRGBO(83, 120, 149, 1);
+Color color_secondary = Color.fromRGBO(31, 59, 100, 1);
+Color color_thirdary = Color.fromRGBO(254, 254, 254, 1);
 
 class _ShoppingCartState extends State<ShoppingCart> {
   @override
@@ -22,7 +22,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
     return Stack(
       children: [
         Align(
-          alignment: Alignment(0.0, -0.7),
+          alignment: Alignment(0.0, -0.8),
           child: Container(
             width: screenWidth - 50,
             height: screenHeight / 5,
@@ -47,7 +47,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                             fontFamily: 'MontserratM', fontSize: 18))),
                 Align(
                     alignment: Alignment(-0.1, 0.0),
-                    child: Text("${xp_total} rs",
+                    child: Text("${xp_total}",
                         style: TextStyle(
                             fontFamily: 'MontserratB', fontSize: 18))),
                 Align(
@@ -65,32 +65,134 @@ class _ShoppingCartState extends State<ShoppingCart> {
           ),
         ),
         Align(
-          alignment: Alignment(0.0, 0.35),
-          child: Container(
+          alignment: Alignment(0.0,0.6),
+                  child: Container(
+                    height: screenHeight/1.6,
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.green, width: 2.0)),
-            height: screenHeight / 2,
-            width: screenWidth / 1.1,
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return _ProdutcCart(context);
+              border: Border.all(color:Colors.blue, width: 2.0)
+            ),
+            child: DraggableScrollableSheet(
+              initialChildSize: 0.2,
+              minChildSize: 0.1,
+              maxChildSize: 0.6,
+              builder: (context, scrollController) {
+                return SingleChildScrollView(
+                  controller: scrollController,
+                    child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green, width: 2.0)),
+                      height: screenHeight / 2 - 30,
+                      width: screenWidth - 50,
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return _ProdutcCart(context);
+                        },
+                        padding: EdgeInsets.all(2.0),
+                        itemCount: 2,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15, bottom: 20),
+                      child: Container(
+                        width: screenWidth / 1.5,
+                        child: Divider(
+                          color: Colors.black,
+                          height: 1.2,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(-0.8, 0.0),
+                      child: Stack(
+                        children: [
+                          Container(
+                            child: Text(
+                              "Formas de Pagamento",
+                              style: TextStyle(
+                                  fontSize: 15, fontFamily: "MontserratB"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(0.0, 0.0),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text("Cartão de Crédito"),
+                            leading: Radio(
+                                value: null, groupValue: null, onChanged: null),
+                          ),
+                          ListTile(
+                            title: Text("Na entrega"),
+                            leading: Radio(
+                                value: null, groupValue: null, onChanged: null),
+                          )
+                        ],
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(0.0, 0.0),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text("Cartão de Crédito"),
+                            leading: Radio(
+                                value: null, groupValue: null, onChanged: null),
+                          ),
+                          ListTile(
+                            title: Text("Na entrega"),
+                            leading: Radio(
+                                value: null, groupValue: null, onChanged: null),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ));
               },
-              padding: EdgeInsets.all(2.0),
-              itemCount: 2,
             ),
           ),
         ),
-        Align(          
-          alignment: Alignment(0.0,1.0),
-                  child: Container(
-                    width: screenWidth,
-                    child: RaisedButton(
-            onPressed: () {},
-            color: color_primary,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft:30,topRight:30)),
-          ),
+        Align(
+          alignment: Alignment(0.0, 1.0),
+          child: Container(
+            height: 50,
+            width: screenWidth,
+            child: RaisedButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 5),
+                    child: Text(
+                      "Finalizar Compra",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "MontserratB",
+                          fontSize: 20),
+                    ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5, right: 10),
+                    child: Icon(
+                      Icons.verified,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+              onPressed: () {},
+              color: color_primary,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30))),
+            ),
+          ),
         ),
         CustomScrollView(
           slivers: [
