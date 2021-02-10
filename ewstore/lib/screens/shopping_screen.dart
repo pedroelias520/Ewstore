@@ -65,94 +65,81 @@ class _ShoppingCartState extends State<ShoppingCart> {
           ),
         ),
         Align(
-          alignment: Alignment(0.0,0.6),
-                  child: Container(
-                    height: screenHeight/1.6,
+          alignment: Alignment(0.0, 0.5),
+          child: Container(
+            height: screenHeight,
             decoration: BoxDecoration(
-              border: Border.all(color:Colors.blue, width: 2.0)
-            ),
+                border: Border.all(color: Colors.blue, width: 2.0)),
             child: DraggableScrollableSheet(
-              initialChildSize: 0.2,
-              minChildSize: 0.1,
-              maxChildSize: 0.6,
+              initialChildSize: 0.7,
+              minChildSize: 0.5,
+              maxChildSize: 1.0,
               builder: (context, scrollController) {
                 return SingleChildScrollView(
-                  controller: scrollController,
+                    controller: scrollController,
                     child: Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green, width: 2.0)),
-                      height: screenHeight / 2 - 30,
-                      width: screenWidth - 50,
-                      child: ListView.builder(
-                        itemBuilder: (context, index) {
-                          return _ProdutcCart(context);
-                        },
-                        padding: EdgeInsets.all(2.0),
-                        itemCount: 2,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15, bottom: 20),
-                      child: Container(
-                        width: screenWidth / 1.5,
-                        child: Divider(
-                          color: Colors.black,
-                          height: 1.2,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.green, width: 2.0)),
+                          height: screenHeight / 2 - 60,
+                          width: screenWidth - 50,
+                          child: ListView.builder(
+                            itemBuilder: (context, index) {
+                              return _ProdutcCart(context);
+                            },
+                            padding: EdgeInsets.all(0.0),
+                            itemCount: 1,
+                          ),
                         ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(-0.8, 0.0),
-                      child: Stack(
-                        children: [
-                          Container(
-                            child: Text(
-                              "Formas de Pagamento",
-                              style: TextStyle(
-                                  fontSize: 15, fontFamily: "MontserratB"),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15, bottom: 20),
+                          child: Container(
+                            width: screenWidth / 1.5,
+                            child: Divider(
+                              color: Colors.black,
+                              height: 1.2,
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(0.0, 0.0),
-                      child: Column(
-                        children: [
-                          ListTile(
-                            title: Text("Cartão de Crédito"),
-                            leading: Radio(
-                                value: null, groupValue: null, onChanged: null),
+                        ),
+                        Align(
+                          alignment: Alignment(-0.8, 0.0),
+                          child: Stack(
+                            children: [
+                              Container(
+                                child: Text(
+                                  "Formas de Pagamento",
+                                  style: TextStyle(
+                                      fontSize: 15, fontFamily: "MontserratB"),
+                                ),
+                              ),
+                            ],
                           ),
-                          ListTile(
-                            title: Text("Na entrega"),
-                            leading: Radio(
-                                value: null, groupValue: null, onChanged: null),
-                          )
-                        ],
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(0.0, 0.0),
-                      child: Column(
-                        children: [
-                          ListTile(
-                            title: Text("Cartão de Crédito"),
-                            leading: Radio(
-                                value: null, groupValue: null, onChanged: null),
+                        ),
+                        Align(
+                          alignment: Alignment(0.0, 0.0),
+                          child: Column(
+                            children: [
+                              ListTile(
+                                title: Text("Cartão de Crédito"),
+                                leading: Radio(
+                                    value: null,
+                                    groupValue: null,
+                                    onChanged: null),
+                              ),
+                              ListTile(
+                                title: Text("Na entrega"),
+                                leading: Radio(
+                                    value: null,
+                                    groupValue: null,
+                                    onChanged: null),
+                              )
+                            ],
                           ),
-                          ListTile(
-                            title: Text("Na entrega"),
-                            leading: Radio(
-                                value: null, groupValue: null, onChanged: null),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ));
+                        ),
+                      ],
+                    ));
               },
             ),
           ),
@@ -212,7 +199,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
         //Firestore.instance.collection("Users").where("tipo",isEqualTo: 'Paciente').snapshots()
         stream: Firestore.instance
             .collection('Users')
-            .document()
+            .document("7iiERIG56izN5Ftqy9I2")
             .collection("Card")
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -239,16 +226,19 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         .map((DocumentSnapshot document) {
                   return GestureDetector(
                     child: Card(
-                      margin: EdgeInsets.all(5),
-                      color: Color.fromRGBO(62, 57, 98, 1),
+                      margin: EdgeInsets.only(bottom:10),
+                      shape: RoundedRectangleBorder(                          
+                          borderRadius: BorderRadius.circular(25)),
+                      color: Color.fromRGBO(236, 236, 236, 1),
                       child: Container(
+                        decoration: BoxDecoration(boxShadow: [new BoxShadow(color: Colors.transparent)]),
                         height: 120,
                         child: Row(
                           children: <Widget>[
-                            Container(
+                            Container(                              
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: new NetworkImage(
+                                    image: new NetworkImage(                                      
                                         document['image'].toString()),
                                     repeat: ImageRepeat.noRepeat,
                                     fit: BoxFit.cover),
@@ -260,54 +250,69 @@ class _ShoppingCartState extends State<ShoppingCart> {
                               margin: EdgeInsets.all(10.0),
                             ),
                             Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: <Widget>[
-                                    AutoSizeText(
-                                      document['price'],
+                              child: Stack(
+                                children: <Widget>[
+                                  Align(
+                                    alignment: Alignment(-0.5, -0.8),
+                                    child: Text(
+                                      "${document['name']}",
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontFamily: 'MontserratB',
+                                          color: Colors.black),
+                                      textAlign: TextAlign.right,
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment(-0.7, -0.3),
+                                    child: AutoSizeText(
+                                      "${document['price']}.00 RS",
                                       style: TextStyle(
                                           fontSize: 20,
-                                          fontFamily: 'UbuntuM',
-                                          color: Colors.white),
+                                          fontFamily: 'MontserratM',
+                                          color: Colors.black),
                                       textAlign: TextAlign.center,
                                       maxLines: 2,
                                     ),
-                                    Text(
-                                      document['qtd'],
+                                  ),
+                                  Align(
+                                    alignment: Alignment(-0.5, 0.7),
+                                    child: Text(
+                                      "${document['qtd']}",
                                       style: TextStyle(
-                                          fontFamily: 'UbuntuM',
-                                          color:
-                                              Color.fromRGBO(124, 124, 188, 1)),
+                                          fontSize: 17,
+                                          fontFamily: 'MontserratB',
+                                          color: color_primary),
                                       textAlign: TextAlign.right,
                                     ),
-                                    Text(
-                                      document['size'],
-                                      style: TextStyle(
-                                        fontFamily: 'UbuntuM',
-                                        color: Color.fromRGBO(124, 124, 188, 1),
-                                      ),
-                                      textAlign: TextAlign.right,
-                                    ),
-                                    Text(
-                                      document['type'],
-                                      style: TextStyle(
-                                        fontFamily: 'UbuntuM',
-                                        color: Color.fromRGBO(124, 124, 188, 1),
-                                      ),
-                                      textAlign: TextAlign.right,
-                                    ),
-                                    Text(
-                                      document['xp'],
-                                      style: TextStyle(
-                                        fontFamily: 'UbuntuM',
-                                        color: Color.fromRGBO(124, 124, 188, 1),
-                                      ),
-                                      textAlign: TextAlign.right,
-                                    ),
-                                  ],
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                ),
+                                  ), 
+                                  Align(
+                                        alignment: Alignment(1.0, 1.0),
+                                        child: Container(
+                                          margin: EdgeInsets.all(0),
+                                          height: 50,
+                                          width: 50,
+                                          child: RaisedButton(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20),
+                                              bottomRight: Radius.circular(20),
+                                            )),
+                                            color: color_primary,
+                                            onPressed: () {},
+                                            child: Center(
+                                              child: Align(
+                                                alignment: Alignment(0.0,0.0),
+                                                child: Icon(
+                                                  Icons.delete_outline_outlined,
+                                                  color: Colors.white,
+                                                  size: 25,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )),                                   
+                                ],
                               ),
                             ),
                           ],
