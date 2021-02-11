@@ -25,7 +25,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
           alignment: Alignment(0.0, -0.8),
           child: Container(
             width: screenWidth - 50,
-            height: screenHeight / 5,
+            height: screenHeight / 5 - 30,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 gradient: LinearGradient(colors: [
@@ -65,7 +65,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
           ),
         ),
         Align(
-          alignment: Alignment(0.0, 0.5),
+          alignment: Alignment(0.0, 0.4),
           child: Container(
             height: screenHeight,
             decoration: BoxDecoration(
@@ -80,11 +80,9 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     child: Column(
                       children: [
                         Container(
-                          decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: Colors.green, width: 2.0)),
+                          decoration: BoxDecoration(                              ),
                           height: screenHeight / 2 - 60,
-                          width: screenWidth - 50,
+                          width: screenWidth - 60,
                           child: ListView.builder(
                             itemBuilder: (context, index) {
                               return _ProdutcCart(context);
@@ -229,21 +227,22 @@ class _ShoppingCartState extends State<ShoppingCart> {
                       margin: EdgeInsets.only(bottom:10),
                       shape: RoundedRectangleBorder(                          
                           borderRadius: BorderRadius.circular(25)),
-                      color: Color.fromRGBO(236, 236, 236, 1),
+                      color: Color.fromRGBO(242, 242, 242, 1),
                       child: Container(
                         decoration: BoxDecoration(boxShadow: [new BoxShadow(color: Colors.transparent)]),
                         height: 120,
                         child: Row(
                           children: <Widget>[
                             Container(                              
-                              decoration: BoxDecoration(
+                              decoration: BoxDecoration(                                
                                 image: DecorationImage(
+                                    alignment: Alignment(0.0,0.0),
                                     image: new NetworkImage(                                      
-                                        document['image'].toString()),
+                                        document['image'].toString(),scale: 0.8),
                                     repeat: ImageRepeat.noRepeat,
-                                    fit: BoxFit.cover),
+                                    fit: BoxFit.fill),
                                 shape: BoxShape.circle,
-                                color: Colors.white,
+                                color: Colors.transparent,                                
                               ),
                               width: 80,
                               height: 80,
@@ -266,7 +265,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                   Align(
                                     alignment: Alignment(-0.7, -0.3),
                                     child: AutoSizeText(
-                                      "${document['price']}.00 RS",
+                                      "${document['price']} RS",
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontFamily: 'MontserratM',
