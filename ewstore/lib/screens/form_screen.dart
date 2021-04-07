@@ -188,7 +188,7 @@ class _FormScreenState extends State<FormScreen> {
                                       Icons.lock,
                                       color: Colors.black,
                                     ),
-                                    hintText: "Qual o seu email",
+                                    hintText: "Escolha uma senha",
                                     labelText: "Senha"),
                               ),
                             ),
@@ -211,8 +211,7 @@ class _FormScreenState extends State<FormScreen> {
                                     icon: Icon(
                                       Icons.lock,
                                       color: Colors.black,
-                                    ),
-                                    hintText: "Qual o seu email",
+                                    ),                                    
                                     labelText: "Repita sua senha"),
                               ),
                             ),
@@ -235,8 +234,7 @@ class _FormScreenState extends State<FormScreen> {
                                     icon: Icon(
                                       Icons.date_range,
                                       color: Colors.black,
-                                    ),
-                                    hintText: "Sua senha",
+                                    ),                                    
                                     labelText: "Data de nascimento"),
                               ),
                             ),
@@ -272,7 +270,7 @@ class _FormScreenState extends State<FormScreen> {
                               margin: EdgeInsets.all(10),
                               child: RaisedButton(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(20)),
                                 onPressed: () {},
                                 color: color_primary,
                                 child: Text(
