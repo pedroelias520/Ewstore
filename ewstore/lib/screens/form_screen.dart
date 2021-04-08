@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:ewstore/screens/card_screen.dart';
 import 'package:ewstore/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 
 class FormScreen extends StatefulWidget {
   @override
@@ -23,6 +25,8 @@ class _FormScreenState extends State<FormScreen> {
   final dateInput = TextEditingController();
   final cepInput = TextEditingController();
   File _image;
+  var maskCEP = new MaskTextInputFormatter(mask: '##.###.###', filter: {"#": RegExp(r'[0-9]')});
+  var maskDate = new MaskTextInputFormatter(mask: '##/##/####', filter: {"#": RegExp(r'[0-9]')});
 
   Future getImage(verification) async {
     try {
@@ -148,7 +152,7 @@ class _FormScreenState extends State<FormScreen> {
                               padding: EdgeInsets.only(top: 20, bottom: 20),
                               width: screenWidth - 70,
                               child: TextFormField(
-                                controller: nameInput,
+                                controller: emailInput,
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius:
@@ -172,7 +176,8 @@ class _FormScreenState extends State<FormScreen> {
                               padding: EdgeInsets.only(top: 20, bottom: 20),
                               width: screenWidth - 70,
                               child: TextFormField(
-                                controller: nameInput,
+                                obscureText: true,
+                                controller: passwordInput,
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius:
@@ -196,7 +201,8 @@ class _FormScreenState extends State<FormScreen> {
                               padding: EdgeInsets.only(top: 20, bottom: 20),
                               width: screenWidth - 70,
                               child: TextFormField(
-                                controller: nameInput,
+                                obscureText: true,
+                                controller: passwordConfirmInput,
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius:
@@ -219,7 +225,8 @@ class _FormScreenState extends State<FormScreen> {
                               padding: EdgeInsets.only(top: 20, bottom: 20),
                               width: screenWidth - 70,
                               child: TextFormField(
-                                controller: nameInput,
+                                inputFormatters: [maskDate],
+                                controller: dateInput,
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius:
@@ -242,7 +249,8 @@ class _FormScreenState extends State<FormScreen> {
                               padding: EdgeInsets.only(top: 20, bottom: 20),
                               width: screenWidth - 70,
                               child: TextFormField(
-                                controller: nameInput,
+                                inputFormatters: [maskCEP],
+                                controller: cepInput,
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius:
