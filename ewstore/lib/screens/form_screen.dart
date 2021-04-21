@@ -7,7 +7,6 @@ import 'package:ewstore/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-
 class FormScreen extends StatefulWidget {
   @override
   _FormScreenState createState() => _FormScreenState();
@@ -25,8 +24,11 @@ class _FormScreenState extends State<FormScreen> {
   final dateInput = TextEditingController();
   final cepInput = TextEditingController();
   File _image;
-  var maskCEP = new MaskTextInputFormatter(mask: '##.###.###', filter: {"#": RegExp(r'[0-9]')});
-  var maskDate = new MaskTextInputFormatter(mask: '##/##/####', filter: {"#": RegExp(r'[0-9]')});
+  var maskCEP = new MaskTextInputFormatter(
+      mask: '##.###.###', filter: {"#": RegExp(r'[0-9]')});
+  var maskDate = new MaskTextInputFormatter(
+      mask: '##/##/####', filter: {"#": RegExp(r'[0-9]')});
+  String groupValue;
 
   Future getImage(verification) async {
     try {
@@ -81,13 +83,13 @@ class _FormScreenState extends State<FormScreen> {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                  color: Color.fromRGBO(130, 156, 176, 1), width: 2.5)),
-                                                                
+                                  color: Color.fromRGBO(130, 156, 176, 1),
+                                  width: 2.5)),
                           child: Container(
                             margin: EdgeInsets.all(30),
                             width: screenWidth / 3,
                             height: screenWidth / 3,
-                            decoration: BoxDecoration(                                
+                            decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: _image != null
                                         ? FileImage(
@@ -217,7 +219,7 @@ class _FormScreenState extends State<FormScreen> {
                                     icon: Icon(
                                       Icons.lock,
                                       color: Colors.black,
-                                    ),                                    
+                                    ),
                                     labelText: "Repita sua senha"),
                               ),
                             ),
@@ -241,7 +243,7 @@ class _FormScreenState extends State<FormScreen> {
                                     icon: Icon(
                                       Icons.date_range,
                                       color: Colors.black,
-                                    ),                                    
+                                    ),
                                     labelText: "Data de nascimento"),
                               ),
                             ),
@@ -268,6 +270,49 @@ class _FormScreenState extends State<FormScreen> {
                                     ),
                                     hintText: "CEP",
                                     labelText: "CEP"),
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(left: screenWidth/6,right:screenWidth/6),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Radio(
+                                          value: 'Masculino',
+                                          groupValue: groupValue,
+                                          onChanged: (val) {
+                                            setState(() {
+                                              groupValue = val;
+                                            });
+                                          }),
+                                      Text(
+                                        'Masculino',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: 'MontserratB'),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Radio(
+                                          value: 'Feminino',
+                                          groupValue: groupValue,
+                                          onChanged: (val) {
+                                            setState(() {
+                                              groupValue = val;
+                                            });
+                                          }),
+                                      Text(
+                                        'Feminino',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: 'MontserratB'),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                             Container(
