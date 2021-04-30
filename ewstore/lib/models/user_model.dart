@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ewstore/screens/test_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +20,8 @@ class UserModel extends Model {
   Map<String, dynamic> userData = Map();
   bool isLodding = false;
   BuildContext get context => null;
+  Map<String, dynamic> levels = Map();
+  Map<String, dynamic> levelCurrentUser = Map();
   
 
   Future<Null> _saveUserData(@required Map<String, dynamic> userData,
@@ -117,6 +120,15 @@ class UserModel extends Model {
       }
     }
 
+      Future getLevels() async {
+    debugPrint("===========================");    
+    var level = await Firestore.instance.collection("Commons").document("Levels").get();    
+    levels = level.data; 
+    debugPrint(levels.toString());
+    debugPrint("Data updated");
+    debugPrint("===========================");  
+  }
+
     Future<dynamic> saveImage(@required dynamic image) async {
       try {
         String fileName = 'images/${DateTime.now()}.png';
@@ -132,6 +144,18 @@ class UserModel extends Model {
       }
     }
 
+    Future<Map> getLevelUser(@required Map<String, dynamic> userData) async {
+      getLevels();
+      for(int i=0;i<31;i++){
+          if(userData["level"]>levels["Level ${i}"] && userData["level"]<levels["Level ${i+1}"]){
+            levelCurrentUser["Current Level User"] = i;
+            levelCurrentUser["Next Level"] = i+1;
+          }
+      }
+
+    
+      return levelCurrentUser;
+    }
     Future<Null> _loadCurrentUser() async {
       try {
         if (firebaseUser == null) {

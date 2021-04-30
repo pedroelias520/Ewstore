@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ewstore/commons/drawer_common/Drawer.dart';
 import 'package:ewstore/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ Color base_color = Color.fromRGBO(254, 207, 161, 1);
 class _CardScreenState extends State<CardScreen> {
   @override
   Widget build(BuildContext context) {
+
+
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     String name = "Vestido Vermelho com bolinhas";

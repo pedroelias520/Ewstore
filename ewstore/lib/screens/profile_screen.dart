@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
+  
 }
 
 Color color_primary = Color.fromRGBO(83, 120, 149, 1);
@@ -17,6 +18,9 @@ Color color_thirdary = Color.fromRGBO(254, 254, 254, 1);
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
+
+
+
   String person_name = 'Pedro Elias';
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
