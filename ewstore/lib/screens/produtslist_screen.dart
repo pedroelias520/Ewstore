@@ -18,6 +18,8 @@ String username = "Pedro";
 String level = '11';
 int currentUserPoints = 1194;
 Map<String,dynamic> currentUserLevel =  Map();
+Map<String,int> userData =  Map ();
+
 
 class _ProductListState extends State<ProductList> {
   Widget BackgoundColor() => Container(
@@ -32,10 +34,13 @@ class _ProductListState extends State<ProductList> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return ScopedModelDescendant<UserModel>(builder: (context, builder, model) {
+    return ScopedModelDescendant<UserModel>(builder: (context, builder, model) {    
+      model.GetLevelUser(currentUserPoints);  
+      currentUserLevel = {"Current Level User": model.levelCurrentUser['CurrentLevelUser']};      
       if(model.isLodding){
           return Center(child: CircularProgressIndicator()); 
       }
+      
       return Stack(
         children: [
           Container(
@@ -53,7 +58,7 @@ class _ProductListState extends State<ProductList> {
                     child: Container(
                         padding: EdgeInsets.only(left: 20),
                         child: Align(
-                          alignment: Alignment(-0.8, 0.7),
+                          alignment: Alignment(-0.5, 0.7),
                           child: Row(
                             children: [
                               Text(
@@ -64,7 +69,7 @@ class _ProductListState extends State<ProductList> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 10),
                                 child: Text(
-                                  level,
+                                  currentUserLevel["Current Level User"],
                                   style: TextStyle(
                                       fontSize: 20, fontFamily: 'MontserratB'),
                                 ),

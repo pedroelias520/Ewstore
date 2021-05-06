@@ -14,7 +14,8 @@ Future getLevels() async {
   double firstLevel = 7;
   for(int i=0;i<31;i++){
     firstLevel = firstLevel * 1.2;   
-    levels['Level ${i}'] = (firstLevel).toStringAsFixed(0);  
+    levels['Level ${i}'] = (firstLevel).toStringAsFixed(0);
+    print(levels['Level ${i}']);  
   }
   //var level = await Firestore.instance.collection("Commons").document("Levels").get();
   Firestore.instance.collection("Commons").document("Levels").setData(levels);
