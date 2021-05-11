@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return ScopedModel<UserModel>(
       model: UserModel(),
           child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Ewstore',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(        
           primarySwatch: Colors.blue,
