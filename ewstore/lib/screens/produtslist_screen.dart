@@ -36,7 +36,7 @@ class _ProductListState extends State<ProductList> {
     double screenHeight = MediaQuery.of(context).size.height;
     return ScopedModelDescendant<UserModel>(builder: (context, builder, model) {    
       model.GetLevelUser(currentUserPoints);  
-      currentUserLevel = {"Current Level User": model.levelCurrentUser['CurrentLevelUser']};      
+      currentUserLevel = {"Current Level User": model.levelCurrentUser['Current Level User']};      
       if(model.isLodding){
           return Center(child: CircularProgressIndicator()); 
       }
