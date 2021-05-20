@@ -66,8 +66,10 @@ class UserModel extends Model {
       var level = await Firestore.instance
           .collection("Commons")
           .document("Levels")
-          .get();
+          .get();        
+      
       levels = level.data;
+      print(levels["Level 1"]);
       //debugPrint(levels.toString());
       debugPrint("Data updated");
       debugPrint("===========================");
@@ -86,6 +88,7 @@ class UserModel extends Model {
                 levelCurrentUser["Level ${i}"];
       }
     }
+    print(levelCurrentUser);
   }
 
   void SignIn(@required String email, @required String pass,
