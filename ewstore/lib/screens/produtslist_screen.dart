@@ -40,7 +40,10 @@ class _ProductListState extends State<ProductList> {
           model.GetLevelUser(currentUserPoints);
         },
       );
-      currentUserLevel = {"Current Level User": model.levelCurrentUser['Current Level User']};      
+      currentUserLevel = {"Current Level User": model.levelCurrentUser['Current Level User']}; 
+      debugPrint("++ "*10);
+      debugPrint(model.levelCurrentUser["Current Level User"]);
+      debugPrint("++ "*10);     
       if(model.isLodding){
           return Center(child: CircularProgressIndicator()); 
       }

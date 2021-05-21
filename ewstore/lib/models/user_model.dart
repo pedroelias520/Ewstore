@@ -75,8 +75,8 @@ class UserModel extends Model {
       debugPrint("===========================");
     }
 
-  Map<String, int> GetLevelUser(@required int userData) {
-    GetLevels();
+  void  GetLevelUser(@required int userData) async {
+    await GetLevels();
     for (int i = 0; i < 31; i++) {
       if (userData > levels["Level ${i}"] &&
           userData < levels["Level ${i + 1}"]) {
@@ -88,7 +88,9 @@ class UserModel extends Model {
                 levelCurrentUser["Level ${i}"];
       }
     }
-    print(levelCurrentUser);
+    debugPrint("_*_"*10);
+    debugPrint(levelCurrentUser["Current Level User"]);
+    debugPrint("_*_"*10);
   }
 
   void SignIn(@required String email, @required String pass,
